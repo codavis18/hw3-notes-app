@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-import Welcome from './welcome';
+import Note from './note';
+import NoteBar from './notebar';
+
+const Immutable = require('immutable');
+
 
 // example class based component (smart component)
 class App extends Component {
@@ -8,14 +12,80 @@ class App extends Component {
     super(props);
 
     // init component state here
-    this.state = {};
+    this.state = {
+      notes: Immutable.Map({
+        0: {
+          id: 0,
+          title: 'testing',
+          text: '![](http://i.giphy.com/26FPImXfDlv4AFbBC.gif)',
+          x: 0,
+          y: 10,
+          zIndex: 0,
+        },
+        1: {
+          id: 1,
+          title: 'headings',
+          text: '# large ',
+          x: 0,
+          y: 50,
+          zIndex: 1,
+        },
+      }),
+    };
+
+    this.setState = this.setState.bind(this);
+    this.delete = this.delete.bind(this);
+    this.update = this.update.bind(this);
+  }
+
+  add(title) {
+    const newNote = {
+      id: this.state.notes.size + 1,
+      title,
+      text: 'new note',
+      x: Math.floor(Math.random() * 400),
+      y: Math.floor(Math.random() * 400),
+      zIndex: this.state.notes.size + 1,
+    };
+
+    this.setState({
+      notes: this.state.notes.set(newNote.id, newNote),
+    });
+
+    console.log(newNote);
+  }
+
+  delete(id) {
+    this.setState({
+      notes: this.state.notes.delete(id),
+    });
+  }
+
+  update(id, fields) {
+    console.log(id, fields);
+    this.setState({
+      notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
+    });
+  }
+
+  renderNotes() {
+    return this.state.notes.entrySeq().map(([id, note]) => {
+      return <Note id={id} key={id} note={note} delete={this.delete} update={this.update} />;
+    });
   }
 
   render() {
     return (
-      <div>
-        <Welcome />
+      <div className="main">
+        <div id="notebar">
+          <NoteBar onCreate={title => this.add(title)} />
+        </div>
+
+        <div className="notes_container">
+          {this.renderNotes()}
+        </div>
       </div>
+
     );
   }
 }
