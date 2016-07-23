@@ -20,13 +20,14 @@ class App extends Component {
     this.setState = this.setState.bind(this);
     this.delete = this.delete.bind(this);
     this.update = this.update.bind(this);
+    this.add = this.add.bind(this);
   }
 
-  add(title) {
+  add(title, text) {
     const newNote = {
       id: this.state.notes.size + 1,
       title,
-      text: 'new note',
+      text,
       x: Math.floor(Math.random() * 400),
       y: Math.floor(Math.random() * 400),
       zIndex: this.state.notes.size + 1,
@@ -63,7 +64,7 @@ class App extends Component {
     return (
       <div className="main">
         <div id="notebar">
-          <NoteBar onCreate={title => this.add(title)} />
+          <NoteBar onCreate={this.add} />
         </div>
 
         <div className="notes_container">
