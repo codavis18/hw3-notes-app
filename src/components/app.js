@@ -14,22 +14,6 @@ class App extends Component {
     // init component state here
     this.state = {
       notes: Immutable.Map({
-        0: {
-          id: 0,
-          title: 'testing',
-          text: '![](http://i.giphy.com/26FPImXfDlv4AFbBC.gif)',
-          x: 0,
-          y: 10,
-          zIndex: 0,
-        },
-        1: {
-          id: 1,
-          title: 'headings',
-          text: '# large ',
-          x: 0,
-          y: 50,
-          zIndex: 1,
-        },
       }),
     };
 
@@ -56,6 +40,7 @@ class App extends Component {
   }
 
   delete(id) {
+    console.log(id);
     this.setState({
       notes: this.state.notes.delete(id),
     });

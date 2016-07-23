@@ -21,6 +21,7 @@ class Note extends Component {
     this.onDeleteClick = this.onDeleteClick.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.onDrag = this.onDrag.bind(this);
+    this.onStopDrag = this.onStopDrag.bind(this);
   }
 
 
@@ -44,11 +45,11 @@ class Note extends Component {
 
   onUpdate(fields) {
     console.log(fields);
-    this.props.update(this.props.note.id, fields);
+    this.props.update(this.props.id, fields);
   }
 
   onStartDrag() {
-
+    // update z-index
   }
 
   onDrag(e, ui) {
@@ -58,12 +59,12 @@ class Note extends Component {
   }
 
   onStopDrag() {
-    this.onUpdate({ x: this.state.note.x, y: this.state.note.y });
+    this.onUpdate({ x: this.state.x, y: this.state.y });
   }
 
   renderNoteBody() {
     if (this.state.isEditing) {
-      // from http://andreypopp.github.io/react-textarea-autosize/
+      // the following from http://andreypopp.github.io/react-textarea-autosize/
       return (
         <div>
           <Textarea
