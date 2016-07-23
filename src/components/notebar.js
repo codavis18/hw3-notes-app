@@ -30,19 +30,22 @@ class NoteBar extends Component {
     return (
       <div id="notebar">
         <Form inline>
+          <FormGroup>
+            <div className="pageTitle">PostIt!</div>
+          </FormGroup>
           <FormGroup controlId="formInlineTitle">
             <ControlLabel>Title</ControlLabel>
             {' '}
-            <FormControl onChange={this.onTitleChange} value={this.state.titleinput} />
+            <FormControl onChange={this.onTitleChange} value={this.state.titleinput} placeholder="Note title" />
           </FormGroup>
           {' '}
           <FormGroup controlId="formInlineBody">
             <ControlLabel>Text</ControlLabel>
             {' '}
-            <FormControl onChange={this.onBodyChange} value={this.state.bodyinput} />
+            <FormControl onChange={this.onBodyChange} value={this.state.bodyinput} placeholder="Note body" />
           </FormGroup>
           {' '}
-          <Button onClick={this.onCreateClick}>Create Note</Button>
+          <Button bsStyle="primary" onClick={this.onCreateClick}>Create Note</Button>
         </Form>
       </div>
     );

@@ -6,7 +6,47 @@ body {
 }
 
 .note {
-  background-color: darken(white, 10%);
+  // background-color: darken(white, 10%);
   width:auto;
   display: inline-block;
+  background-color: rgb(255,255,165);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2px;
+}
+
+#note-title-bar {
+  font-family: 'Yellowtail', cursive;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.noteBody {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+
+.icons {
+  float: right;
+}
+
+#notebar-container{
+  padding: 10px;
+  display: inline-block;
+  float: right;
+
+}
+
+#notebar {
+  float: right;
+
+}
+
+.pageTitle {
+  font-family: 'Permanent Marker', cursive;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  float: left;
+  font-size: 32px;
 }

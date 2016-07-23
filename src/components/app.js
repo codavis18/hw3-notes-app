@@ -63,10 +63,9 @@ class App extends Component {
   render() {
     return (
       <div className="main">
-        <div id="notebar">
+        <div id="notebar-container">
           <NoteBar onCreate={this.add} />
         </div>
-
         <div className="notes_container">
           {this.renderNotes()}
         </div>

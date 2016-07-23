@@ -90,12 +90,12 @@ class Note extends Component {
         onStop={this.onStopDrag}
       >
         <div className="note">
-          <span>
-            {this.props.note.title}
-            <i onClick={this.onEditClick} className="fa fa-pencil-square-o" aria-hidden="true"></i>
-            <i onClick={this.onDeleteClick} className="fa fa-trash-o" aria-hidden="true"></i>
-            <i className="fa fa-arrows note-mover" aria-hidden="true"></i>
-          </span>
+          <div id="note-title-bar">
+            <span id="note-title-text">{this.props.note.title} &emsp; </span>
+            <i className="fa fa-arrows icons note-mover" aria-hidden="true"></i>
+            <i onClick={this.onEditClick} className="fa fa-pencil-square-o icons" aria-hidden="true"></i>
+            <i onClick={this.onDeleteClick} className="fa fa-trash-o icons" aria-hidden="true"></i>
+          </div>
 
           <div>
             {this.renderNoteBody()}
