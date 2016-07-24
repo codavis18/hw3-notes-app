@@ -45,7 +45,7 @@ class NoteBar extends Component {
             <FormControl onChange={this.onBodyChange} value={this.state.bodyinput} placeholder="Note body" />
           </FormGroup>
           {' '}
-          <Button bsStyle="primary" onClick={this.onCreateClick}>Create Note</Button>
+          <Button onClick={this.onCreateClick}>Create Note</Button>
         </Form>
       </div>
     );

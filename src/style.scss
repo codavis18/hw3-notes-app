@@ -1,3 +1,9 @@
+$blue: rgb(81,173,238);
+$magenta: rgb(237,18,111);
+$yellow: rgb(251,249,55);
+$green: rgb(178,252,58);
+
+
 body {
   font-family: "Roboto", sans-serif;
   color: rgb(10%, 10%, 10%);
@@ -9,9 +15,25 @@ body {
   // background-color: darken(white, 10%);
   width:auto;
   display: inline-block;
-  background-color: rgb(255,255,165);
+  background-color: $yellow;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 2px;
+}
+
+.note:nth-child(4n+1) {
+  background-color: $yellow;
+}
+
+.note:nth-child(4n+2) {
+  background-color: $blue;
+}
+
+.note:nth-child(4n+3) {
+  background-color: $green;
+}
+
+.note:nth-child(4n+4) {
+  background-color: $magenta;
 }
 
 #note-title-bar {
@@ -34,7 +56,10 @@ body {
   padding: 10px;
   display: inline-block;
   float: right;
-
+  background-color: rgb(81,173,238);
+  width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 #notebar {
