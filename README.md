@@ -12,4 +12,5 @@ I made a simple note-taking/post-it/stickies app using react. The app has 3 comp
 ## Extra credit
 - used react-bootstrap to make note creator bar look better 
 - made notes look pretty
+- used SASS variables/nth-child to make notes have different colors
 
