@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Note from './note';
 import NoteBar from './notebar';
+import * as firebasedb from '../firebasedb';
+
 
 const Immutable = require('immutable');
 
@@ -21,11 +23,15 @@ class App extends Component {
     this.delete = this.delete.bind(this);
     this.update = this.update.bind(this);
     this.add = this.add.bind(this);
+    this.fetchState = this.fetchState.bind(this);
+  }
+
+  componentDidMount() {
+    firebasedb.fetchNotes(this.fetchState);
   }
 
   add(title, text) {
     const newNote = {
-      id: this.state.notes.size + 1,
       title,
       text,
       x: Math.floor(Math.random() * 400),
@@ -33,24 +39,23 @@ class App extends Component {
       zIndex: this.state.notes.size + 1,
     };
 
-    this.setState({
-      notes: this.state.notes.set(newNote.id, newNote),
-    });
-
+    firebasedb.add(newNote);
     console.log(newNote);
   }
 
   delete(id) {
     console.log(id);
-    this.setState({
-      notes: this.state.notes.delete(id),
-    });
+    firebasedb.destroy(id);
   }
 
   update(id, fields) {
     console.log(id, fields);
+    firebasedb.update(id, fields);
+  }
+
+  fetchState(notes) {
     this.setState({
-      notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
+      notes: Immutable.Map(notes),
     });
   }
 

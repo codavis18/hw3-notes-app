@@ -27,7 +27,7 @@ class Note extends Component {
 
   onDeleteClick(event) {
     console.log('DELETE');
-    this.props.delete(this.props.note.id);
+    this.props.delete(this.props.id);
   }
 
   onEditClick(event) {
